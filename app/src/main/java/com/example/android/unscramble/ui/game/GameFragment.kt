@@ -1,7 +1,5 @@
 
-
 package com.example.android.unscramble.ui.game
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android.unscramble.R
 import com.example.android.unscramble.databinding.GameFragmentBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * Fragment where the game is played, contains the game logic.
@@ -90,10 +89,10 @@ class GameFragment : Fragment() {
      * restart the game.
      */
     private fun restartGame() {
+        viewModel.reinitializeData()
         setErrorTextField(false)
         updateNextWordOnScreen()
     }
-
     /*
      * Exits the game.
      */
