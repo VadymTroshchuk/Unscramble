@@ -7,6 +7,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class GameViewModel : ViewModel() {
 
 
+
+
     private fun getNextWord() {
         currentWord = allWordsList.random()
         val tempWord = currentWord.toCharArray()
@@ -46,6 +48,33 @@ class GameViewModel : ViewModel() {
             .show()
     }
 
+
+    private fun increaseScore() {
+        _score += SCORE_INCREASE
+    }
+
+
+    private fun onSubmitWord() {
+        val playerWord = binding.textInputEditText.text.toString()
+
+        if (viewModel.isUserWordCorrect(playerWord)) {
+            setErrorTextField(false)
+            if (viewModel.nextWord()) {
+                updateNextWordOnScreen()
+            } else {
+                showFinalScoreDialog()
+            }
+        } else {
+            setErrorTextField(true)
+        }
+    }
+    fun isUserWordCorrect(playerWord: String): Boolean {
+        if (playerWord.equals(currentWord, true)) {
+            increaseScore()
+            return true
+        }
+        return false
+    }
 
     init {
         Log.d("GameFragment", "GameViewModel created!")
