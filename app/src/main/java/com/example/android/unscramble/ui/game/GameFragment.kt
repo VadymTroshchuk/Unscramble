@@ -50,10 +50,7 @@ class GameFragment : Fragment() {
 
 
 
-        viewModel.currentScrambledWord.observe(viewLifecycleOwner,
-            { newWord ->
-                binding.textViewUnscrambledWord.text = newWord
-            })
+
 
         viewModel.score.observe(viewLifecycleOwner,
             { newScore ->
