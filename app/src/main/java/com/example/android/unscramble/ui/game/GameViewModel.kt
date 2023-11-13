@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 class GameViewModel : ViewModel(){
     private val _score = MutableLiveData(0)
@@ -46,10 +46,7 @@ class GameViewModel : ViewModel(){
         getNextWord()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        Log.d("GameFragment", "GameViewModel destroyed!")
-    }
+
 
     private fun getNextWord() {
         currentWord = allWordsList.random()
