@@ -68,6 +68,17 @@ class GameViewModel : ViewModel() {
             setErrorTextField(true)
         }
     }
+
+    private fun onSkipWord() {
+        if (viewModel.nextWord()) {
+            setErrorTextField(false)
+            updateNextWordOnScreen()
+        } else {
+            showFinalScoreDialog()
+        }
+    }
+
+
     fun isUserWordCorrect(playerWord: String): Boolean {
         if (playerWord.equals(currentWord, true)) {
             increaseScore()
